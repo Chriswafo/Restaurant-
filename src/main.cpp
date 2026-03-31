@@ -56,6 +56,36 @@ public:
     }
 
 };
+class Commande{
+private:
+    int idCommande;
+    vector <Plat> platscommandes;
+    float total;
+public:
+    Commande(int i):idCommande(i){}
+    Commande():idCommande(0),total(0.O){}
+    void ajouterPlat(Plat p){
+       platscommandes.push_back(p);
+    }
+    int getidCommande(){
+       return idCommande;
+    }
+    void calculerTotal(){
+       total=0;
+       for(int i=0;i<platscommandes.size();i++){
+            total=total+platscommandes[i].getprix();
+       }
+    }
+    void afficherCommande(){
+       cout<<"la commande a pour identifiant: "<<idCommande<<endl;
+       cout<<"elle comprends les plats suivants:"<<endl;
+       for(int i=0;i<platscommandes.size();i++){
+            cout<<"-";
+            platscommandes[i].afficherPlat();
+       }
+       cout<<"pour un Total de:"<<total<<" £"<<endl;
+    }
+};
 int main()
 {
    setlocale(LC_ALL,"");
