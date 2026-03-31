@@ -30,6 +30,32 @@ public:
        cout<<"le plat "<<nom<<" coute "<<prix<<" £"<<endl;
     }
 };
+class Menu{
+private:
+    vector <Plat> plats;
+public:
+    void ajouterPlat(Plat p){
+       plats.push_back(p);
+    }
+    void afficherMenu(){
+       for(int i=0;i<plats.size();i++){
+          plats[i].afficherPlat();
+       }
+    }
+    Plat chercherPlat(string nom){
+        bool trouve(false);
+        for(const auto& p:plats){//cette ligne va permettre de balayer automatiquement les valeurs du tableau , grace a "auto" il prendra directement le type approprier il prendra donc valeur par valeur tous les elements du tableau
+            if(p.getnom()==nom){
+                trouve=true;
+                return p;
+            }
+            if(!trouve)
+                cout<<"le plat "<<nom<<" n'existe pas dans le menu"<<endl;
+
+        }
+    }
+
+};
 int main()
 {
    setlocale(LC_ALL,"");
