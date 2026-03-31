@@ -86,6 +86,32 @@ public:
        cout<<"pour un Total de:"<<total<<" £"<<endl;
     }
 };
+class Restaurant{
+private:
+    Menu menu;//menu du restaurant
+    vector <Commande> commandes;//commande des clients
+public:
+    void ajouterCommande (Commande c){
+        commandes.push_back(c);
+    }
+    void afficherCommande(){
+        for(int i=0;i<commandes.size();i++){
+            cout<<"-commande "<<i+1<<":";
+            commandes[i].afficherCommande();
+        }
+    }
+    void genererFacture(int id){
+       for(int i=0;i<commandes.size();i++){
+           if(commandes[i].getidCommande()==id)
+              cout<<"facture: "<<endl;
+              commandes[i].afficherCommande();
+       }
+    }
+    Menu& getMenu(){
+     return menu;
+    }
+};
+
 int main()
 {
    setlocale(LC_ALL,"");
